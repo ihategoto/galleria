@@ -8,7 +8,7 @@
     CREATE TABLE quadri (id INT NOT NULL AUTO_INCREMENT, Titolo VARCHAR(50) NOT NULL, DataP DATE NOT NULL, Autore INT NOT NULL, Tecnica INT NOT NULL, PRIMARY KEY  (id), FOREIGN KEY  (Autore) REFERENCES autori(id), FOREIGN KEY  (Tecnica) REFERENCES tecniche(id));
 */
 
-$conn = new mysqli("localhost", "root", "D3005Chh77", "Galleria");
+$conn = new mysqli("localhost", "root", "", "Galleria");
 /* Reference : http://php.net/manual/en/class.mysqli.php */
 
 if($conn->connect_errno){

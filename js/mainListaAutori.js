@@ -1,5 +1,9 @@
 window.onload = function(e) {
-  console.log("Opening");
+  $.get("/galleria/php/lists.php", { o: "autori" }, function(result) {
+    fillList(result.results);
+  });
+
+  /*
   const data = [
     {
       Nome: "Caravaggio",
@@ -20,7 +24,9 @@ window.onload = function(e) {
       id: 3
     }
   ];
+
   fillList(data);
+  */
 };
 
 const fillList = data => {

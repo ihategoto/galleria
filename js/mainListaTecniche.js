@@ -1,5 +1,8 @@
 window.onload = function(e) {
-  console.log("Opening");
+  $.get("/galleria/php/lists.php", { o: "tecniche" }, function(result) {
+    fillList(result.results);
+  });
+  /*
   const data = [
     {
       id: 1,
@@ -15,6 +18,7 @@ window.onload = function(e) {
     }
   ];
   fillList(data);
+  */
 };
 
 const fillList = data => {

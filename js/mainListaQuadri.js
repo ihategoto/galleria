@@ -1,5 +1,8 @@
 window.onload = function(e) {
-  console.log("Opening");
+  $.get("/galleria/php/lists.php", { o: "quadri" }, function(result) {
+    fillList(result.results);
+  });
+  /*
   const data = [
     {
       Immagine: "../media/img1.jpg",
@@ -18,6 +21,7 @@ window.onload = function(e) {
     }
   ];
   fillList(data);
+  */
 };
 
 const fillList = data => {

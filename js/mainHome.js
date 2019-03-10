@@ -33,8 +33,23 @@ onChangeSearch = e => {
   while (container.firstChild) {
     container.removeChild(container.firstChild);
   }
-  data.map(item => {
-    container.appendChild(createHint(item.Titolo, item.id, "quadro"));
+
+  $.ajax({
+    type: "post",
+    url: "/galleria/php/search.php",
+    dataType: "json",
+    contentType: "application/json",
+    data: JSON.stringify({ keyword: value }),
+    success: function(response) {
+      const data = response.results;
+      if (data.length > 0) {
+        data.map(item => {
+          container.appendChild(createHint(item.Titolo, item.id, "quadro"));
+        });
+      } else {
+        container.appendChild(showNoResults());
+      }
+    }
   });
 
   if (value && isActive)
@@ -55,6 +70,15 @@ const createHint = (Titolo, id, type) => {
   return div.firstChild;
 };
 
+const showNoResults = text => {
+  const li = document.createElement("li");
+  const header = document.createElement("h4");
+  header.innerText = "Nessun Risultato";
+  li.className = "btn-src";
+  li.appendChild(header);
+  return li;
+};
+
 const handleHint = e => {
   e.preventDefault();
   const id = e.target.id;
@@ -69,7 +93,7 @@ const handleHint = e => {
 
   input.value = targetID;
 
-  form.action = "./ispeziona/artista.php";
+  form.action = "./ispeziona/quadro.php";
   form.submit();
 };
 
