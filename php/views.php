@@ -41,7 +41,7 @@ if(strcmp($target, "autori") != 0 && strcmp($target, "quadri") !=0 && strcmp($ta
 /*
     Selezione le generalità dell'oggetto.
 */
-$query = "SELECT * FROM ".$target." WHERE id = ".$pk;
+$query = "SELECT * FROM ".$target." WHERE id = ".$pk.";";
 
 if(!($r = $conn->query($query))){
     /* Qualcosa è andato storto nell'esecuzione della query */
@@ -58,7 +58,7 @@ $r->close();
 
 $targets = array("autori" => array("quadri", "Autore"), "tecniche" => array("quadri", "Tecnica"));
 
-$query = "SELECT * FROM ".$targets[$target][0]." WHERE ".$targets[$target][1]." = ".$pk;
+$query = "SELECT * FROM ".$targets[$target][0]." WHERE ".$targets[$target][1]." = ".$pk.";";
 
 
 if(!($r = $conn->query($query))){
