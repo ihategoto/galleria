@@ -74,8 +74,10 @@ $related = array("related" => array());
 while(($row = $r->fetch_array(MYSQLI_ASSOC))){
     array_push($related['related'], $row);
 }
-$conn->close();
+/* Chiudo lo stream da cui prendo le informazioni */
 $r->close();
+/* Chiudo la connessione al server MySQL */
+$conn->close();
 $result = array_merge($result_detail, $related);
 header('Content-Type: application/json');
 echo json_encode($result);
