@@ -47,6 +47,7 @@ while(($row = $r->fetch_array(MYSQLI_ASSOC))){
 $r->close();
 /* Chiudo la connessione al server MySQL */
 $conn->close();
+header('Content-Type: application/json');
 echo json_encode($results);
 die();
 
