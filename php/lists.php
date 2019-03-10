@@ -39,9 +39,9 @@ if(!($r = $conn->query($query))){
     $conn->close();
     die();
 }
-$results = array();
+$results = array("results" => array());
 while(($row = $r->fetch_array(MYSQLI_ASSOC))){
-    array_push($results, $row);
+    array_push($results["results"], $row);
 }
 /* Chiudo lo stream da cui prendo le informazioni */
 $r->close();
