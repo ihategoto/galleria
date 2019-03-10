@@ -9,41 +9,51 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="./js/mainHome.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <title>Galleria D'Arte</title>
 </head>
-<body>
+<body onclick="unfocusedSearch(event)">
     <div class="home-container">
 
         <nav class="navbar navbar-expand-lg navbar-light">
-            <a class="navbar-brand" href="#">Galleria D'arte</a>
+            <a class="navbar-brand" href="/galleria">Galleria D'arte</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item active ">
-                        <a class="nav-link" href="#">Home</a>
+                        <a class="nav-link" href="/galleria">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Quadri</a>
+                        <a class="nav-link" href="/galleria/liste/listaQuadri.php">Quadri</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Artisti</a>
+                        <a class="nav-link" href="/galleria/liste/listaAutori.php">Artisti</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Tecniche</a>
+                        <a class="nav-link" href="/galleria/liste/listaTecniche.php">Tecniche</a>
                     </li>
                 </ul>
             </div>
         </nav>
 
-        <form class="search-container">
+        <div class="search-container">
             <div class="search-block">
-                <input type="text" name="search-input" class="search-input" placeholder="Guernica..."/>
+                <input type="text" autocomplete="off" name="search-input" id="search-input" class="search-input" placeholder="Guernica..." onfocus="focusSearch(event)"/>
                 <button type="submit" name="search-submit" class="search-submit" ><i class="fas fa-search"></i></button> 
             </div>
-        </form>
+            <div class="options-form" id="options">
+                    <ul class="options-container" id="options-container">
+                        <li><button>AAA</button></li>
+                        <li><button>AAA</button></li>
+                        <li><button>AAA</button></li>
+                    </ul>
+                    
+                <form action="" method="GET" style="visibility: hidden" id="submit-search"><input type="hidden" id="hidden-input" name="o" value=""></form>
+            </div>
+        </div>
 
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
