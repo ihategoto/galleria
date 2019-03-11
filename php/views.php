@@ -56,10 +56,12 @@ if(!($r = $conn->query($query))){
 $result_detail = $r->fetch_array(MYSQLI_ASSOC);
 $r->close();
 
-$targets = array("autori" => array("quadri", "Autore"), "tecniche" => array("quadri", "Tecnica"));
-
-$query = "SELECT * FROM ".$targets[$target][0]." WHERE ".$targets[$target][1]." = ".$pk.";";
-
+if(strcmp($target, "quadri") != 0){ 
+    $targets = array("autori" => array("quadri", "Autore"), "tecniche" => array("quadri", "Tecnica"));
+    $query = "SELECT * FROM ".$targets[$target][0]." WHERE ".$targets[$target][1]." = ".$pk.";";
+}else{
+    $query = "SELECT autori.Nome, autori.Cognome, tecniche.NomeT FROM quadri INNER JOIN autori ON autori.id = quadri.Autore INNER JOIN tecniche ON tecniche.id = quadri.Tecnica WHERE quadri.id = $pk";
+}
 
 if(!($r = $conn->query($query))){
     /* Qualcosa è andato storto nell'esecuzione della query */
